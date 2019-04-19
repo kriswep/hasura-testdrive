@@ -1,0 +1,22 @@
+- args:
+    delete:
+      columns: '*'
+    headers: []
+    insert:
+      columns: '*'
+    name: echo_post
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    table:
+      name: post
+      schema: public
+    update:
+      columns:
+      - author_id
+      - published_at
+      - text
+      - title
+    webhook: https://httpbin.org/post
+  type: create_event_trigger

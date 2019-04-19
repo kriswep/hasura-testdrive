@@ -1,0 +1,19 @@
+- args:
+    delete:
+      columns: '*'
+    headers: []
+    insert:
+      columns: '*'
+    name: echo
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    table:
+      name: profile
+      schema: public
+    update:
+      columns:
+      - name
+    webhook: https://httpbin.org/post
+  type: create_event_trigger

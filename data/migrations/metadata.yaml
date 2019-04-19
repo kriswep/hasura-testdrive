@@ -1,0 +1,48 @@
+functions: []
+query_templates: []
+remote_schemas: []
+tables:
+- array_relationships:
+  - comment: null
+    name: posts
+    using:
+      foreign_key_constraint_on:
+        column: author_id
+        table: post
+  delete_permissions: []
+  event_triggers: []
+  insert_permissions: []
+  object_relationships: []
+  select_permissions: []
+  table: author
+  update_permissions: []
+- array_relationships: []
+  delete_permissions: []
+  event_triggers:
+  - definition:
+      delete:
+        columns: '*'
+      insert:
+        columns: '*'
+      update:
+        columns:
+        - author_id
+        - published_at
+        - text
+        - title
+    headers: []
+    name: echo_post
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: https://httpbin.org/post
+  insert_permissions: []
+  object_relationships:
+  - comment: null
+    name: author
+    using:
+      foreign_key_constraint_on: author_id
+  select_permissions: []
+  table: post
+  update_permissions: []

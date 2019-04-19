@@ -1,0 +1,13 @@
+- args:
+    sql: CREATE EXTENSION IF NOT EXISTS pgcrypto;
+  type: run_sql
+- args:
+    sql: CREATE TABLE "public"."post"("id" uuid NOT NULL UNIQUE DEFAULT gen_random_uuid(),
+      "author_id" uuid NOT NULL, "title" text NOT NULL, "published_at" date NOT NULL
+      DEFAULT now(), "text" text NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("author_id")
+      REFERENCES "public"."author"("id") ON UPDATE restrict ON DELETE restrict);
+  type: run_sql
+- args:
+    name: post
+    schema: public
+  type: add_existing_table_or_view
