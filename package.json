@@ -1,0 +1,35 @@
+{
+  "name": "hasura-testdrive",
+  "version": "1.0.0",
+  "description": "testdriving hasura",
+  "main": "server.js",
+  "dependencies": {
+    "apollo-fetch": "^0.7.0",
+    "apollo-link": "^1.2.11",
+    "apollo-link-http": "^1.5.14",
+    "apollo-link-ws": "^1.0.17",
+    "apollo-server": "^2.4.8",
+    "apollo-utilities": "^1.2.1",
+    "graphql": "^14.2.1",
+    "graphql-depth-limit": "^1.1.0",
+    "graphql-tools": "^4.0.4",
+    "node-fetch": "^2.3.0",
+    "subscriptions-transport-ws": "^0.9.16",
+    "ws": "^6.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kriswep/hasura-testdrive.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kriswep/hasura-testdrive/issues"
+  },
+  "homepage": "https://github.com/kriswep/hasura-testdrive#readme"
+}
