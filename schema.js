@@ -5,26 +5,22 @@ const { SubscriptionClient } = require('subscriptions-transport-ws');
 const { split } = require('apollo-link');
 const { getMainDefinition } = require('apollo-utilities');
 
-const fetch  = require('node-fetch');
-const ws  = require('ws');
+const fetch = require('node-fetch');
+const ws = require('ws');
 
-const scheme = (proto) => {
+const scheme = proto => {
   // return window && window.location.protocol === 'https:' ? `${proto}s` : proto;
   return proto;
-}
-const HASURA_GRAPHQL_ENGINE_HOSTNAME = 'localhost:8080';
+};
+const HASURA_GRAPHQL_ENGINE_HOSTNAME = process.env.HASURA_GRAPHQL_ENGINE_HOSTNAME || 'localhost:8080';
 const GRAPHQL_ENDPOINT = `${scheme('http')}://${HASURA_GRAPHQL_ENGINE_HOSTNAME}/v1alpha1/graphql`;
 const WEBSOCKET_ENDPOINT = `${scheme('ws')}://${HASURA_GRAPHQL_ENGINE_HOSTNAME}/v1alpha1/graphql`;
 
 // Make WebSocketLink with appropriate url
-const mkWsLink = (uri) => {
-  const subClient = new SubscriptionClient(
-    WEBSOCKET_ENDPOINT,
-    { reconnect: true },
-    ws
-  );
+const mkWsLink = uri => {
+  const subClient = new SubscriptionClient(WEBSOCKET_ENDPOINT, { reconnect: true }, ws);
   return new WebSocketLink(subClient);
-}
+};
 
 // Make HttpLink
 const httpLink = new HttpLink({ uri: GRAPHQL_ENDPOINT, fetch });
@@ -36,17 +32,15 @@ const link = split(
     return kind === 'OperationDefinition' && operation === 'subscription';
   },
   wsLink,
-  httpLink
+  httpLink,
 );
 
-//  const link = new HttpLink({ uri: 'http://localhost:8080/v1alpha1/graphql' }, fetch);
-
-const createSchema =  async () => {
+const createSchema = async () => {
   const schema = makeRemoteExecutableSchema({
     schema: await introspectSchema(link),
     link,
   });
-  return schema
+  return schema;
 };
 
 module.exports = createSchema;

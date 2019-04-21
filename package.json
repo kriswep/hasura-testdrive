@@ -17,7 +17,9 @@
     "subscriptions-transport-ws": "^0.9.16",
     "ws": "^6.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^1.17.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -31,5 +33,10 @@
   "bugs": {
     "url": "https://github.com/kriswep/hasura-testdrive/issues"
   },
-  "homepage": "https://github.com/kriswep/hasura-testdrive#readme"
+  "homepage": "https://github.com/kriswep/hasura-testdrive#readme",
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 120
+  }
 }
