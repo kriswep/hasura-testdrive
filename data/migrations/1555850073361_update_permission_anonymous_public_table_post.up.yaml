@@ -1,0 +1,15 @@
+- args:
+    permission:
+      allow_aggregations: true
+      columns:
+      - id
+      - published_at
+      - text
+      - title
+      filter: {}
+      limit: 20
+    role: anonymous
+    table:
+      name: post
+      schema: public
+  type: create_select_permission

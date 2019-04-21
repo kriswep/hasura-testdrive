@@ -1,0 +1,12 @@
+- args:
+    permission:
+      allow_aggregations: true
+      columns:
+      - name
+      filter: {}
+      limit: 2
+    role: anonymous
+    table:
+      name: author
+      schema: public
+  type: create_select_permission
