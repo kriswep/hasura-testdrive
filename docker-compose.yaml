@@ -17,7 +17,7 @@ services:
       HASURA_GRAPHQL_ENABLE_CONSOLE: 'true' # set to "false" to disable console
       HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
       ## uncomment next line to set an admin secret
-      HASURA_GRAPHQL_ADMIN_SECRET: secret
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_ADMIN_SECRET}
 # prettier-ignore
 volumes:
   db_data:
