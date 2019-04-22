@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { ApolloServer } = require('apollo-server');
 const depthLimit = require('graphql-depth-limit');
 
@@ -7,6 +8,9 @@ createSchema()
   .then(schema => {
     const server = new ApolloServer({
       schema,
+      engine: {
+        apiKey: process.env.ENGINE_API_KEY,
+      },
       validationRules: [depthLimit(6)],
     });
 
