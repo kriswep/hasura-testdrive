@@ -9,8 +9,7 @@ const fetch = require('node-fetch');
 const ws = require('ws');
 
 const scheme = proto => {
-  // return window && window.location.protocol === 'https:' ? `${proto}s` : proto;
-  return proto;
+  return process.env.HASURA_GRAPHQL_ENGINE_PROTO === 'https' ? `${proto}s` : proto;
 };
 const HASURA_GRAPHQL_ENGINE_HOSTNAME = process.env.HASURA_GRAPHQL_ENGINE_HOSTNAME || 'localhost:8080';
 const GRAPHQL_ENDPOINT = `${scheme('http')}://${HASURA_GRAPHQL_ENGINE_HOSTNAME}/v1alpha1/graphql`;
