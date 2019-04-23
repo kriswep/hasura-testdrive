@@ -18,6 +18,20 @@ services:
       HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
       ## uncomment next line to set an admin secret
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_ADMIN_SECRET}
+
+#graphql-front:
+#build: ./
+#ports:
+#- '4000:4000'
+#depends_on:
+#- 'graphql-engine'
+#restart: always
+#environment:
+#- ENGINE_API_KEY
+#- HASURA_ADMIN_SECRET
+#- HASURA_GRAPHQL_ENGINE_HOSTNAME=graphql-engine:8080
+# - HASURA_GRAPHQL_ENGINE_PROTO=http
+
 # prettier-ignore
 volumes:
   db_data:
